@@ -1,0 +1,37 @@
+---
+- name: copy xroad
+  copy: src=xroad.list dest=/etc/apt/sources.list.d/xroad.list owner=root group=root mode=0644
+
+- name: fetch gpg
+  #shell: curl http://www.nic.funet.fi/pub/csc/x-road/client/6.4/packages/xroad_repo.gpg | apt-key add -
+  apt_key: url=http://www.nic.funet.fi/pub/csc/x-road/client/6.4/packages/xroad_repo.gpg state=present
+
+- name: add key for nginx
+  apt_key: keyserver=keyserver.ubuntu.com id=00A6F0A3C300EE8C
+
+- name: add key for xroad
+  apt_key: keyserver=keyserver.ubuntu.com id=EB9B1D8886F44E2A
+
+- name: Set locale
+  lineinfile: dest=/etc/environment line="LC_ALL=en_US.UTF-8"
+
+- name: create xroad user
+  user: name={{user}} password={{password}} shell=/sbin/nologin createhome=no
+
+- name: Set xroad-proxy username
+  debconf: name=xroad-proxy question="xroad-common/username" value={{user}} vtype="string"
+
+- name: Set xroad-proxy SSL certificate subject name
+  debconf: name=xroad-proxy question="xroad-common/admin-subject" value={{ui_subjectDN}} vtype="string"
+
+- name: Set xroad-proxy alt certificate name
+  debconf: name=xroad-proxy question="xroad-common/admin-altsubject" value={{(ui_subjectAltName)}} vtype="string"
+
+- name: Set xroad-proxy SSL certificate subject name
+  debconf: name=xroad-proxy question="xroad-common/service-subject" value={{is_subjectDN}} vtype="string"
+
+- name: Set xroad-proxy alt certificate name
+  debconf: name=xroad-proxy question="xroad-common/service-altsubject" value={{is_subjectAltName}} vtype="string"
+
+- name: install security server and dependencies
+  apt: name=xroad-securityserver update_cache=yes

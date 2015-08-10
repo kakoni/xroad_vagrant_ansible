@@ -1,0 +1,17 @@
+---
+- name: Install stuff
+  hosts: all
+  user: vagrant
+  sudo: true
+  vars:
+    user: grandmaster
+    # created with:
+    # python -c 'import crypt; print crypt.crypt("This is my Password", "$1$SomeSalt$")'
+    password: $1$SomeSalt$UqddPX3r4kH3UL5jq5/ZI.
+    ui_subjectDN: /CN=server.domain.tld
+    ui_subjectAltName: IP:10.10.20.29,DNS:server,DNS:server.domain.tld
+    is_subjectDN: /CN=server.domain.tld
+    is_subjectAltName: IP:10.10.20.29,DNS:server,DNS:server.domain.tld
+
+  roles:
+    - xroad

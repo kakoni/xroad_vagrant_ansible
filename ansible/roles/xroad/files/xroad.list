@@ -1,0 +1,3 @@
+deb http://www.nic.funet.fi/pub/csc/x-road/client/6.4/packages trusty main
+deb http://ppa.launchpad.net/nginx/stable/ubuntu trusty main
+deb http://ppa.launchpad.net/openjdk-r/ppa/ubuntu trusty main
