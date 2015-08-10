@@ -1,4 +1,4 @@
-# xroad_vagrant_ansible
+# Xroad & vagrant & ansible
 
 Example xroad 6 secure server installation using vagrant + ansible.
 
