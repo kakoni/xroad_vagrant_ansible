@@ -1,0 +1,4 @@
+[defaults]
+hostfile = /LOCATIONTO/ec2.py
+private_key_file = /LOCATIONTO/PRIVATEKEY.pem
+roles_path = ./ansible/roles
