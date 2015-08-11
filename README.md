@@ -1,10 +1,11 @@
-# Xroad & vagrant & ansible
+# Xroad & ansible & AWS || Vagrant 
 
-Example xroad 6 secure server installation using vagrant + ansible.
+Example xroad 6 secure server installation using vagrant(or ec2) + ansible.
 
 ## Table of Contents
-1. [Quick start](#quick-start)
-2. [References](#references)
+1. [Quick start using vagrant](#quick-start)
+2. [EC2 Usage](#ec2)
+3. [References](#references)
 
 ## Quick start
 1. Boot vagrant box
@@ -20,6 +21,13 @@ Example xroad 6 secure server installation using vagrant + ansible.
 ```
 
 4. On vagrant host, browse to https://localhost:4000
+
+## EC2
+To get started, install EC2.py scripts. See [Amazon Documentation](https://aws.amazon.com/blogs/apn/getting-started-with-ansible-and-dynamic-amazon-ec2-inventory-management/)
+
+1. Rename ansible.cfg.ec2 to ansible.cfg and edit accordingly
+
+2. Steps 2-3 same as in [vagrant](#quick-start) part
 
 ## References
 - [KAPA documentation](https://confluence.csc.fi/download/attachments/50177427/Liitynt%C3%A4palvelimen%20asennus%202015_03_23.pdf?version=1&modificationDate=1427125267011&api=v2)
